@@ -9,7 +9,8 @@ public class Health : MonoBehaviour
     //GameObject roomManager;
 
     public int maxHealth = 100;
-    public int currentHealth;
+    public int currentHealth = 100;
+    public bool isLocalPlayer;
     
     private void Update()
     {
@@ -19,7 +20,7 @@ public class Health : MonoBehaviour
             Debug.Log("Took 10 damage : Current Health = " + currentHealth);
         }
     }
-    /*
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -29,7 +30,7 @@ public class Health : MonoBehaviour
             Debug.Log("Took 10 damage : Current Health = " + currentHealth);
         }
     }
-    */
+
     [PunRPC]
     public void TakeDamage(int damage)
     {
@@ -43,7 +44,10 @@ public class Health : MonoBehaviour
     public void Die()
     {
         Debug.Log("called Die method");
-        RoomManager.instance.SpawnPlayer();
+        if (isLocalPlayer)
+        {
+            RoomManager.instance.SpawnPlayer();
+        }
         Destroy(gameObject);
     }
 }

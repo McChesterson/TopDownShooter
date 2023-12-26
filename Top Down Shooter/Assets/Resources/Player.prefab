@@ -120,7 +120,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!58 &1433908964347313637
 CircleCollider2D:
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621325288128362789}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c33f16d351ec0e9459fcb74d6596424b, type: 3}
   m_Name: 
@@ -245,6 +245,7 @@ MonoBehaviour:
   firePoint: {fileID: 8448335201434398253}
   bulletPrefab: {fileID: 1132602820653221637, guid: f2e6986e0d7c5d740aa5a0475abc700c, type: 3}
   playerSetup: {fileID: 2952902375968002157}
+  playerMovement: {fileID: 1856658937249774648}
   bulletForce: 20
 --- !u!114 &2952902375968002157
 MonoBehaviour:
@@ -259,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 1856658937249774648}
+  shooting: {fileID: 8974926873792928066}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &2000681164333575466
 MonoBehaviour:
@@ -267,13 +269,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621325288128362789}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd4808501d55fa642be0698288365038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  isLocalPlayer: 0
 --- !u!1 &4108377000069460911
 GameObject:
   m_ObjectHideFlags: 0

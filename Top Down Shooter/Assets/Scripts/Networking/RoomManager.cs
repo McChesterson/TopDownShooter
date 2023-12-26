@@ -48,7 +48,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         var spawnPoint = new Vector3(Random.Range(-8f, 8f), Random.Range(-5f, 5f), 0);
         GameObject _player = PhotonNetwork.Instantiate(player.name, spawnPoint, Quaternion.identity);
+
         _player.GetComponent<PlayerSetup>().SetLocalPlayer();
-        _player.GetComponent<Health>().currentHealth = _player.GetComponent<Health>().maxHealth;
+
+        _player.GetComponent<Health>().isLocalPlayer = true;
     }
 }

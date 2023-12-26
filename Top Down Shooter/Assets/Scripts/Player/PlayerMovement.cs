@@ -11,6 +11,12 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 movement;
     public Vector2 mousePos;
 
+    //public Color startColor;
+    //private void Awake()
+    //{
+    //    startColor = Random.ColorHSV();
+    //    GetComponent<SpriteRenderer>().color = startColor;
+    //}
 
     void Start()
     {

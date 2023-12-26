@@ -5,9 +5,13 @@ using Photon.Pun;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
+    public static RoomManager instance;
     public GameObject player;
-    //[Space]
-    //public Transform spawnPoint;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -15,7 +19,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         PhotonNetwork.ConnectUsingSettings();
     }
-
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
@@ -24,7 +27,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         PhotonNetwork.JoinLobby();
     }
-
     public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
@@ -33,7 +35,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
         PhotonNetwork.JoinOrCreateRoom("test", null, null);
     }
-
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
@@ -48,5 +49,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
         var spawnPoint = new Vector3(Random.Range(-8f, 8f), Random.Range(-5f, 5f), 0);
         GameObject _player = PhotonNetwork.Instantiate(player.name, spawnPoint, Quaternion.identity);
         _player.GetComponent<PlayerSetup>().SetLocalPlayer();
+        _player.GetComponent<Health>().currentHealth = _player.GetComponent<Health>().maxHealth;
     }
 }

@@ -5,12 +5,17 @@ using Photon.Pun;
 
 public class Bullet : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D other)
+    [SerializeField] int bulletDamage = 10;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             GameObject otherplayer = other.transform.gameObject;
-            Debug.Log(otherplayer.GetComponent<PhotonView>().ViewID);
+
+            other.gameObject.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, bulletDamage);
+            Debug.Log(other.gameObject.GetComponent<PhotonView>().ViewID + "took " + bulletDamage + " damage");
+
         }
 
         Destroy(gameObject);

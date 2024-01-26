@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerV3Movement : MonoBehaviour
@@ -16,6 +17,7 @@ public class PlayerV3Movement : MonoBehaviour
 
     Quaternion playerDirection = Quaternion.identity;
     bool rotateMode = false;
+    float zRot = 0;
 
     void Start()
     {
@@ -25,7 +27,6 @@ public class PlayerV3Movement : MonoBehaviour
     {
         //rb.rotation = 0;
         rb.angularVelocity = 0;
-        transform.rotation = playerDirection;
         if (Input.GetKeyDown(isPlayer1? KeyCode.LeftShift : KeyCode.RightShift) && !rotateMode)
         {
             rotateMode = true;
@@ -39,11 +40,11 @@ public class PlayerV3Movement : MonoBehaviour
         if (rotateMode)
         {
             //rotating the player
-            float zRot;
-            zRot = transform.rotation.z;
-            transform.Rotate(0, 0, zRot -= Input.GetAxisRaw(isPlayer1? "HorizontalWASD" : "HorizontalArrows") * rotateSpeed);
-            Debug.Log(zRot);
-            return;
+            zRot = Input.GetAxisRaw(isPlayer1 ? "HorizontalWASD" : "HorizontalArrows") * -rotateSpeed * Time.deltaTime;
+            if(Input.GetAxisRaw(isPlayer1 ? "HorizontalWASD" : "HorizontalArrows") != 0) 
+            { 
+                transform.Rotate(0, 0, zRot);
+            }
         }
         else
         {
@@ -91,6 +92,7 @@ public class PlayerV3Movement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * playerSpeed * Time.fixedDeltaTime);
+        if(!rotateMode)
+            rb.MovePosition(rb.position + movement * playerSpeed * Time.fixedDeltaTime);
     }
 }

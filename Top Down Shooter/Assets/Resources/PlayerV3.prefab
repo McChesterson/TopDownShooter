@@ -41,9 +41,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8739082318682646580}
   - component: {fileID: 2349516208615221710}
-  - component: {fileID: 1325815460972915081}
   - component: {fileID: 2760934198782444037}
   - component: {fileID: 5790041928301693352}
+  - component: {fileID: 1325815460972915081}
+  - component: {fileID: -5567917153188542207}
+  - component: {fileID: -8894090660939934562}
   m_Layer: 7
   m_Name: PlayerV3
   m_TagString: Player
@@ -119,25 +121,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1325815460972915081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4830690554530715136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abd58586a1587bb429e9b6dc4854117a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayer1: 0
-  rb: {fileID: 2760934198782444037}
-  circleCol: {fileID: 5790041928301693352}
-  spawnpoint: {fileID: 0}
-  movement: {x: 0, y: 0}
-  playerSpeed: 5
-  rotateSpeed: 300
 --- !u!50 &2760934198782444037
 Rigidbody2D:
   serializedVersion: 4
@@ -174,7 +157,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 4830690554530715136}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6e7949bd04ba8b64a95d96e0cef00c4f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -200,3 +183,55 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.04}
   serializedVersion: 2
   m_Radius: 0.19
+--- !u!114 &1325815460972915081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830690554530715136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd58586a1587bb429e9b6dc4854117a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer1: 0
+  rb: {fileID: 2760934198782444037}
+  circleCol: {fileID: 5790041928301693352}
+  spawnpoint: {fileID: 0}
+  movement: {x: 0, y: 0}
+  playerSpeed: 5
+  rotateSpeed: 300
+  playerDirection: {x: 0, y: 0, z: 0, w: 1}
+  zRot: 0
+--- !u!114 &-5567917153188542207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830690554530715136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2a896e7adbb7b40968ba8faf9f14a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1132602820653221637, guid: f2e6986e0d7c5d740aa5a0475abc700c, type: 3}
+  firePoint: {fileID: 7581004031096217728}
+  bulletForce: 10
+  fireRate: 5
+  playerDamage: 10
+--- !u!114 &-8894090660939934562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830690554530715136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a477745699882bf4e91c6ae9d69f5cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 0

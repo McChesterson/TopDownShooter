@@ -15,9 +15,9 @@ public class PlayerV3Movement : MonoBehaviour
     public float playerSpeed;
     public float rotateSpeed = 5;
 
-    Quaternion playerDirection = Quaternion.identity;
+    public Quaternion playerDirection = Quaternion.identity;
     bool rotateMode = false;
-    float zRot = 0;
+    public float zRot = 0;
 
     void Start()
     {
@@ -30,22 +30,24 @@ public class PlayerV3Movement : MonoBehaviour
         if (Input.GetKeyDown(isPlayer1? KeyCode.LeftShift : KeyCode.RightShift) && !rotateMode)
         {
             rotateMode = true;
-            Debug.Log(gameObject.name + " rotateMode = " + rotateMode);
+            //Debug.Log(gameObject.name + " rotateMode = " + rotateMode);
         }
         else if (Input.GetKeyDown(isPlayer1 ? KeyCode.LeftShift : KeyCode.RightShift))
         {
             rotateMode = false;
-            Debug.Log(gameObject.name + " rotateMode = " + rotateMode);
+            //Debug.Log(gameObject.name + " rotateMode = " + rotateMode);
         }
+        //when in rotate mode
         if (rotateMode)
         {
-            //rotating the player
             zRot = Input.GetAxisRaw(isPlayer1 ? "HorizontalWASD" : "HorizontalArrows") * -rotateSpeed * Time.deltaTime;
             if(Input.GetAxisRaw(isPlayer1 ? "HorizontalWASD" : "HorizontalArrows") != 0) 
             { 
                 transform.Rotate(0, 0, zRot);
+                playerDirection = transform.rotation;
             }
         }
+        //when NOT in rotate mode
         else
         {
             //moving the player regularly
@@ -53,42 +55,6 @@ public class PlayerV3Movement : MonoBehaviour
             movement.y = Input.GetAxisRaw(isPlayer1? "VerticalWASD" : "VerticalArrows");
             movement = movement.normalized;
         }
-        /*
-        //all of the controls for Player1
-        if (isPlayer1)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftShift) && !rotateMode)
-            {
-                rotateMode = true;
-                Debug.Log("Player1's rotateMode = " + rotateMode);
-                //transform.Rotate(0, 0, rotateSpeed);
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                rotateMode = false;
-                Debug.Log("Player1's rotateMode = " + rotateMode);
-            }
-            
-        }
-        //all of the controls for Player2
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.RightShift) && !rotateMode)
-            {
-                rotateMode = true;
-                Debug.Log("Player2's rotateMode = " + rotateMode);
-                //transform.Rotate(0, 0, rotateSpeed);
-            }
-            else if (Input.GetKeyDown(KeyCode.RightShift))
-            {
-                rotateMode = false;
-                Debug.Log("Player2's rotateMode = " + rotateMode);
-            }
-            movement.x = Input.GetAxisRaw("HorizontalArrows");
-            movement.y = Input.GetAxisRaw("VerticalArrows");
-            movement = movement.normalized;
-        }
-        */
     }
     private void FixedUpdate()
     {

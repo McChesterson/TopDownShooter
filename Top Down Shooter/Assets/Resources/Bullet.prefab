@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 307130152511571613}
   - component: {fileID: 6658728477544713466}
   - component: {fileID: 5342168433185272149}
-  - component: {fileID: 6256226095445733632}
+  - component: {fileID: 8881039538871030489}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1132602820653221637}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15219945, y: -0.013382601, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &6256226095445733632
+--- !u!114 &8881039538871030489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,7 +158,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132602820653221637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4f8c0eee2ee6444ba69bdb6e799df7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 84b524d792e3c1f4086417d2f072cfeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 10
+  rb: {fileID: 6658728477544713466}
+  circleCol: {fileID: 5342168433185272149}

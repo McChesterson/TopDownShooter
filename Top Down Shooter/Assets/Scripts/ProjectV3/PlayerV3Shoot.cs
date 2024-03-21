@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerV3Shoot : MonoBehaviour
 {
+    P1Controls controls;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePoint;
     PlayerV3Movement playerMovemnet;
@@ -16,7 +17,12 @@ public class PlayerV3Shoot : MonoBehaviour
     {
         playerMovemnet = GetComponent<PlayerV3Movement>();
     }
-
+    void Awake()
+    {
+        controls = new P1Controls();
+        controls.PlayerMovement.Enable();
+        controls.PlayerMovement.Shoot.performed += ctx => Fire();
+    }
     // Update is called once per frame
     void Update()
     {

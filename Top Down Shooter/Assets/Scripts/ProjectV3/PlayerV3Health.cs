@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerV3Health : MonoBehaviour
 {
+    public ParticleSystem deathParticle;
+    public GameObject deathPartPos;
+
     public HealthbarControler healthBar;
     public int maxHealth = 100;
     public int currentHealth;
@@ -26,5 +30,8 @@ public class PlayerV3Health : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
+        deathPartPos.transform.position = transform.position;
+        deathParticle.Play();
+        Debug.Log("played death effect");
     }
 }
